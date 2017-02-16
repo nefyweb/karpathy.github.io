@@ -1,7 +1,8 @@
 # Site settings
-title: "Nefy: Business and Finance Intelligence"
+title: "Nefy"
+subtitle: "Business and Finance Intelligence"
 email: 
-description: "The crossroad of strategy and machine intelligence"
+description: "Business and Finance Intelligence"
 baseurl: ""
 url: "http://nefyweb.github.io"
 twitter_username: 
