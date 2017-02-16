@@ -1,11 +1,11 @@
 # Site settings
-title: Andrej Karpathy blog
+title: Nefy
 email: 
-description: "Musings of a Computer Scientist."
+description: ""
 baseurl: ""
-url: "http://karpathy.github.io"
-twitter_username: karpathy
-github_username:  karpathy
+url: "http://nefyweb.github.io"
+twitter_username: 
+github_username:  
 
 # Build settings
 markdown: kramdown
