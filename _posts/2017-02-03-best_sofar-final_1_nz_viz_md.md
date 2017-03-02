@@ -72978,16 +72978,12 @@ plt.ylabel('total sold')
 
 
 
+<img src="output_11_1.png">
 
-![png](output_11_1.png)
+<img src="output_11_2.png">
 
+<img src="output_11_3.png">
 
-
-![png](output_11_2.png)
-
-
-
-![png](output_11_3.png)
 
 
 
