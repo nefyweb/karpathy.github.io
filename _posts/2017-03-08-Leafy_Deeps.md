@@ -6,20 +6,6 @@
 
 First **sequential** from the **Keras** **API** is an **MLP** model. 
 
-table{
-    border-collapse: collapse;
-    border-spacing: 0;
-    border:2px solid #ff0000;
-}
-
-th{
-    border:2px solid #000000;
-}
-
-td{
-    border:1px solid #000000;
-}
-
 
 | Tables        | Description          | 
 | ------------- |-------------| 
@@ -27,7 +13,7 @@ td{
 |Sequential     | One of the two types of Keras Models | 
 |API     | A set of functions and procedures that allow the creation of applications which access the features or data of an operating system, application, or other service  | 
 |MLP     | Multiple Layer Perceptron - Same as ANN (Artificial Neural Network), encompasses all deep learning constructs. | 
-
+{:.mbtablestyle}
 ---
 
 In this scenario, I made use of a standard MLP model to investigate the textual features. This dataset includes pre-extracted feauture information but also near-raw images that can be used to self-extract features. In this example I would create an ensable of a simple **ANN** (MLP for the textual data) and a convolutional neural network (**CNN**) to extract features from the images. 
