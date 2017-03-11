@@ -48,7 +48,100 @@ The textual data here comes from sensory measurement information as it is presen
 There are countless opportunities for more speculative financial predictions and also for indepth analysis that can be invaluable for  choosing amongst stocks. 
 
 - Models trained on aerial photography and geospatial data to identify the number of cars and model of car at an automakers factory to get fast access to location specific information. 
+- Imagery to quickly identify the quality of products (material) from public companies and sensory inputs relating to the texture and the weight of the product. 
+- Imagery inspecting airline carriers and type of carriers to get an indication of the tourist demand in certain areas. The inclusion of radio or other signal information to identify the trajectory of the flight and the potential destination.
 
+#### Business 
+Similar to the finance applications, there are thousands of opportunities to improve your internal business management.   
+
+- Conveyer belt classification for quality management, to identify whether the product is up to standards, this can include weight, size smell and texture measurements all of which can be fed into a mode simlar to DL. A real world example of this is a farmer using classification models to sort through his cucumber harvest. 
+- Imagery for inventory management, where inventory can not easily be quantatively stated, such as with piles of cement, water levels or other commoditee type goods.
+ 
+---
+
+#### Model Description 
+
+The first model we use is **sequential** from the **Keras** **API** and it is an **MLP** model for which I specified certain paramaters.
+
+| Terminology        | Description         | 
+| ------------- |-------------| 
+|Keras     | Is a high-level neural network library | 
+|Sequential     | One of the two types of Keras Models | 
+|API     | A set of functions and procedures that allow the creation of applications which access the features or data of an operating system, application, or other service  | 
+|MLP     | Multiple Layer Perceptron - Same as ANN (Artificial Neural Network), encompasses all deep learning constructs. | 
+|Parameters     | The adjustable variables that can be tuned by algorithms or by the developer to build a better model (accuracy, generalisability) |
+
+In this scenario, I made use of a standard MLP model to investigate the textual features. This dataset includes pre-extracted feauture information but also near-raw images that can be used to self-extract features. In this example I would create an ensable of a simple **ANN** (MLP for the textual data) and a convolutional neural network (**CNN**) to extract features from the images.  
+
+**Convolutional Neural Networks** are ANNs (i.e. MLPs) with a special structure in which the connectivity patterns of neurons is inpired by the *organisation of the visual cortex*, hence the good results with image recognition.
+
+An example of a deep convolutional network:
+(CNN  with many layers are called deep, thus DNN)
+
+
+
+
+<p align="center">
+<img src="/assets/leaf/DNN.png" alt="Drawing" style="width: 350px;"/>
+</p>
+
+| CNN |
+|-------------|
+|**Space or Time:** CNNs have repetitive blocks of neurons that are applied across space (for images) or time (for audio signals etc) - Layers from left to right can therefore represent an image space or a time space.|
+|**Neurons:** For images, these blocks of neurons can be interpreted as 2D convolutional kernels, repeatedly applied over each patch of the image.|
+|**Kernels**: A kernel is a *similarity* function, instead of taking an image, computing and vectorising its features and feeding the feature into a learning algorithm, you only define a single kernel function to compute the *similarity* between images. You provide this kernel that creates a classifier|
+|**Dot Products:** The perceptron formulation does not work with kernels, it works with feature vectors, so why do we use kernels. Because every kernel function can be expressed a dot product in a feature space. 2. And a lot of MLA (Machine Learning Algorithms) can be expressed entirely as dot products.|
+|**Perceptron:** It is the most basic form of an activation function and is simple a binary function that has only two possible results. The orange output can be 1 or 0, based on the activation functions as applied to the yellow inputs. The *activation function* defines the output of that node given an input or set of inputs. <img src="/assets/leaf/Perceptron.png" alt="Drawing" style="width: 180px;"/> |
+|**Components:** There are four main operations in the CNN (Also called ConvNet model, 1. *Convolution*, 2. *Non Linearity (ReLU)*, 3. *Pooling or Sub Sampling*, 4. *Classification (i.e. Fully Connected Layer)*.|
+
+| 1. Convolution |
+|-------------|
+|**Images:** Digitized images are a matrix of pixel values. See how we can simply turn this 8 into a number representing the intensity of black (the black channel)   <img src="/assets/leaf/8.gif" alt="Drawing" style="width: 180px; padding:5px;"/> An image from a standard digital camera will have three channels – red, green and blue – you can imagine those as three 2d-matrices stacked over each other (one for each color). We give each a pixel values in the range 0 to 255.|
+|**Convolution:** The primary purpose of Convolution in case of a CNN is to extract features from the input image. Convolution preserves the spatial relationship between pixels by learning image features using small squares of input data.<br> <br> A simple example where intensities are numerically reprenented in 1s and 0s instead of a range from 0-255, the convolutional algorithm moves around and computes a new matrix  <img src="/assets/leaf/conv.gif" alt="Drawing" style="width: 180px;"/>|
+|**Algorithm:**  We slide the orange matrix over our original image (green) by 1 pixel (also called ‘stride’) and for every position, we compute element wise multiplication (between the two matrices) and add the multiplication outputs to get the final integer which forms a single element of the output matrix (pink).|
+|The reason for choosing this special structure, is to exploit spatial or temporal invariance in recognition. For instance, a "dog" or a "car" may appear anywhere in the image. If we were to learn independent weights at each spatial or temporal location, it would take orders of magnitude more training data to train such an MLP. |
+|**Terminology:** In CNN terminology, the 3×3 matrix is called a ‘filter‘ or ‘kernel’ or ‘feature detector’ and the matrix formed by sliding the filter over the image and computing the dot product is called the ‘Convolved Feature’ or ‘Activation Map’ or the ‘Feature Map‘. It is important to note that filters acts as feature detectors from the original input image.|
+|**Manipulate:** Using various other computational functions we can create those all to well known operations/features such as sharpening, blurring or detecting the edges of an image. We do this by defining our filter/kernel matrix. So different filters/kernels can detect different features from the an image. GIMP, the GNU image manipulation tool, uses 5x5 of 3x4 matrices such as what we do.|
+|**Features:** So we can create an operationg by using preformatted 3x3 matrices (filters) to create image outputs, that we can use a features, there are the 'convolved' images <img src="/assets/leaf/convolved.png" alt="Drawing" style="width: 300px;"/>|
+|**Variety:** If, for each image you have such a list of convolved images, it is worth understanding that the classifier (classification algorithm) will now find it easier to identify similar images|
+|**Filters:** In practice, a CNN learns the values of these filters on its own during the training process (although we still need to specify parameters such as number of filters, filter size, architecture of the network etc. before the training process). The more number of filters we have, the more image features get extracted and the better our network becomes at recognizing patterns in unseen images. This therefore means that the filters are not preformatted or trained such as in GIMP.|
+|**Paramaters:** The size of the Feature Map (Convolved Feature) is controlled by three parameters that we need to decide before the convolution step is performed: *Depth, Stride, Zero-Padding*|
+|**Depth:** This is simply the number of filters we use, a specification of 7 depth would mean 7 filters, an example would be the 7 filters produced in the imge above. The more debth the more filters, the more feature maps (features)|
+|**Stride:** Stride is the number of pixels by which we slide our filter matrix over the input matrix. When the stride is 1 then we move the filters one pixel at a time. When the stride is 2, then the filters jump 2 pixels at a time as we slide them around. Having a larger stride will produce smaller feature maps.|
+|**Zero-padding:** Sometimes, it is convenient to pad the input matrix with zeros around the border, so that we can apply the filter to bordering elements of our input image matrix. A nice feature of zero padding is that it allows us to control the size of the feature maps. Adding zero-padding is also called wide convolution, and not using zero-padding would be a narrow convolution. Have a look at the gif if you don't comprehend the function of inducing zero-padding. |
+
+| 2. ReLU |
+|-------------|
+|**Non Linearity:** After every Convolutional operation and additional operation called ReLU is performed, it is a non-linear operation that stands for Rectified Linear Unit. It is a simple trnaformation making sure that the output is not higher than the input or lower than zero. <br> `OUTPUT = MAX(ZERO, INPUT)`| 
+|**Generalisability:** ReLU is an element wise operation (applied per pixel) and replaces all negative pixel values in the feature map by zero. Most of the real world data is non-linear, so we have to remove the linearity created by the convolution network. Visuaaly seen, it removes the negative black values. This allows for better generalisability. <img src="/assets/leaf/relu.png" alt="Drawing" style="width: 500px;"/> Other non linear functions such as tanh or sigmoid can also be used instead of ReLU, but ReLU has been found to perform better in most situations.| 
+
+
+| 3. Pooling/Sub-sampling  |
+|-------------|
+|**Dimensionality Reduction:** Spatial Pooling (also called subsampling or downsampling) reduces the dimensionality of each feature map but retains the most important information.| 
+|**Types:** Spatial Pooling can be of different types: Max, Average, Sum etc. In case of Max Pooling, we define a spatial neighborhood (for example, a 2×2 window) and take the largest element from the rectified feature map within that window. Instead of taking the largest element we could also take the average (Average Pooling) or sum of all elements in that window. In practice, Max Pooling has been shown to work better. See below image for max pooling in action. <img src="/assets/leaf/max.png" alt="Drawing" style="width: 350px;"/> |
+|**Sofar:** We have images that we vectorize into matrices, then paramater specifications affecting the size of the feature map, those specifications are fed into to convolved algorithms spitting out feature maps, then ReLU or other non-linear functions smooths or rectifies the features maps (Size of the map depending on the paramater specifications (Depth, Stride, Padding)), then we decrease the dimensions with a pooling operation. The function of Pooling is to progressively reduce the spatial size of the input representation|  
+|**Logic Behind Pooling:** <br>- Makes the input representations (feature dimension) smaller and more manageable <br> - Reduces the number of parameters and computations in the network, therefore, controlling overfitting <br> - Makes the network invariant to small transformations, distortions and translations in the input image (a small distortion in input will not change the output of Pooling – since we take the maximum / average value in a local neighborhood). <br> - Helps us arrive at an almost scale invariant representation of our image (the exact term is “equivariant”). This is very powerful since we can detect objects in an image no matter where they are located <br> |
+|**Convolutional Layers:** All the above is only simple representations of a the basic building blocks of a CNN. The CNN can have two or more sets of *Convolution, ReLU and Pooling Layers*. The next layer simply maps features based on the output of the previous layer|
+|**The Theory:** The theory is that when you use this approach the layers together extract the useful features from the images and introduce non-linearity in our network, reduces dimensions while making features quivariant to scale and translation. The output of the last pooling Layer acts as an input to the *Fully Connected Layer*|
+
+| 4. Fully Connected Layer  |
+|-------------|
+|**MLP:** The Fully Connected layer is a traditional Multi Layer Perceptron (ANN) that uses a softmax activation function in the output layer (other classifiers like SVM can also be used, but will stick to softmax in this post). The term “Fully Connected” implies that every neuron in the previous layer is connected to every neuron on the next layer.|
+|**High Level Features (HLF):** The output from the convolutional and pooling layers represent high-level features of the input image. The purpose of the Fully Connected layer is to use these features for classifying the input image into various classes based on the training dataset.|
+|**Softmax Sum to One:** The sum of output probabilities from the Fully Connected Layer is 1. This is ensured by using the Softmax as the activation function in the output layer of the Fully Connected Layer. The Softmax function takes a vector of arbitrary real-valued scores and squashes it to a vector of values between zero and one that sum to one. A crude example of the process:   <img src="/assets/leaf/crude.png" alt="Drawing" style="width: 400px;"/>|
+
+| Concluding CNN  |
+|-------------|
+|**Together:** As discussed above, the **Convolution** + **Pooling layers** act as *Feature Extractors* from the input image while **Fully Connected layer** acts as a *classifier.*|
+|**Deep:** In general, the more convolution steps we have, the more complicated features our network will be able to learn to recognize. For example, in Image Classification a ConvNet may learn to detect edges from raw pixels in the first layer, then use the edges to detect simple shapes in the second layer, and then use these shapes to deter higher-level features, such as facial shapes in higher layers|
+|**Visualise:** Lastly to use a visual way of understand the process, follow this link: http://scs.ryerson.ca/~aharley/vis/conv/. <br>The below image is an example of an '8', in this scenario a leaf, that has to be classified by species using a learning algorithm.|
+
+----------
+
+<img src="/assets/leaf/1286.jpg" alt="Drawing" style="width: 100%;"/>
+
+---
 
 
 ```python
