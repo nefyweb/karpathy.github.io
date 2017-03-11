@@ -187,7 +187,7 @@ pd.read_csv("train.csv").head()
 
 
 
-<div>
+<div style="overflow: auto;">
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
