@@ -351,7 +351,7 @@ pd.read_csv("train.csv").describe()
 
 
 
-<div>
+<div style="overflow: auto;">
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -1007,7 +1007,7 @@ yPred.tail()
 
 
 
-<div>
+<div style="overflow: auto;">
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
