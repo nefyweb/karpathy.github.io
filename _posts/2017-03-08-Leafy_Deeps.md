@@ -4,6 +4,22 @@
 ---
 #### Model Description 
 
+<style>
+table{
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:2px solid #ff0000;
+}
+
+th{
+    border:2px solid #000000;
+}
+
+td{
+    border:1px solid #000000;
+}
+</style>
+
 First **sequential** from the **Keras** **API** is an **MLP** model. 
 
 <table style="width:100%">
