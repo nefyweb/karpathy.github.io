@@ -4,6 +4,7 @@ table{
     border-collapse: collapse;
     border-spacing: 0;
     border:1px solid #000000;
+    overflow-x: auto;
 }
 
 th{
@@ -99,7 +100,7 @@ An example of a deep convolutional network:
 |**Images:** Digitized images are a matrix of pixel values. See how we can simply turn this 8 into a number representing the intensity of black (the black channel)   <img src="/assets/leaf/8.gif" alt="Drawing" style="width: 180px; padding:5px;"/> An image from a standard digital camera will have three channels – red, green and blue – you can imagine those as three 2d-matrices stacked over each other (one for each color). We give each a pixel values in the range 0 to 255.|
 |**Convolution:** The primary purpose of Convolution in case of a CNN is to extract features from the input image. Convolution preserves the spatial relationship between pixels by learning image features using small squares of input data.<br> <br> A simple example where intensities are numerically reprenented in 1s and 0s instead of a range from 0-255, the convolutional algorithm moves around and computes a new matrix  <img src="/assets/leaf/conv.gif" alt="Drawing" style="width: 180px;"/>|
 |**Algorithm:**  We slide the orange matrix over our original image (green) by 1 pixel (also called ‘stride’) and for every position, we compute element wise multiplication (between the two matrices) and add the multiplication outputs to get the final integer which forms a single element of the output matrix (pink).|
-|The reason for choosing this special structure, is to exploit spatial or temporal invariance in recognition. For instance, a "dog" or a "car" may appear anywhere in the image. If we were to learn independent weights at each spatial or temporal location, it would take orders of magnitude more training data to train such an MLP. |
+|**Structure:** The reason for choosing this special structure, is to exploit spatial or temporal invariance in recognition. For instance, a "dog" or a "car" may appear anywhere in the image. If we were to learn independent weights at each spatial or temporal location, it would take orders of magnitude more training data to train such an MLP. |
 |**Terminology:** In CNN terminology, the 3×3 matrix is called a ‘filter‘ or ‘kernel’ or ‘feature detector’ and the matrix formed by sliding the filter over the image and computing the dot product is called the ‘Convolved Feature’ or ‘Activation Map’ or the ‘Feature Map‘. It is important to note that filters acts as feature detectors from the original input image.|
 |**Manipulate:** Using various other computational functions we can create those all to well known operations/features such as sharpening, blurring or detecting the edges of an image. We do this by defining our filter/kernel matrix. So different filters/kernels can detect different features from the an image. GIMP, the GNU image manipulation tool, uses 5x5 of 3x4 matrices such as what we do.|
 |**Features:** So we can create an operationg by using preformatted 3x3 matrices (filters) to create image outputs, that we can use a features, there are the 'convolved' images <img src="/assets/leaf/convolved.png" alt="Drawing" style="width: 300px;"/>|
@@ -135,12 +136,12 @@ An example of a deep convolutional network:
 |-------------|
 |**Together:** As discussed above, the **Convolution** + **Pooling layers** act as *Feature Extractors* from the input image while **Fully Connected layer** acts as a *classifier.*|
 |**Deep:** In general, the more convolution steps we have, the more complicated features our network will be able to learn to recognize. For example, in Image Classification a ConvNet may learn to detect edges from raw pixels in the first layer, then use the edges to detect simple shapes in the second layer, and then use these shapes to deter higher-level features, such as facial shapes in higher layers|
-|**Visualise:** Lastly to use a visual way of understand the process, follow this link: http://scs.ryerson.ca/~aharley/vis/conv/. <br>The below image is an example of an '8', in this scenario a leaf, that has to be classified by species using a learning algorithm.|
+|**Visualise:** Lastly to use a visual way of understand the process, follow this link: http://scs.ryerson.ca/~aharley/vis/conv/. |
 
 ----------
 
 <img src="/assets/leaf/1286.jpg" alt="Drawing" style="width: 100%;"/>
-
+Above is an example of a greyscaled negative leaf, that has to be classified by species using a learning algorithm.
 ---
 
 
@@ -935,196 +936,8 @@ print('Best Model loaded!')
     Epoch 00017: val_loss did not improve
     Epoch 00018: val_loss did not improve
     Epoch 00019: val_loss did not improve
-    Epoch 00020: val_loss did not improve
-    Epoch 00021: val_loss did not improve
-    Epoch 00022: val_loss did not improve
-    Epoch 00023: val_loss did not improve
-    Epoch 00024: val_loss did not improve
-    Epoch 00025: val_loss did not improve
-    Epoch 00026: val_loss did not improve
-    Epoch 00027: val_loss did not improve
-    Epoch 00028: val_loss improved from 0.00025 to 0.00022, saving model to leafnet.h5
-    Epoch 00029: val_loss did not improve
-    Epoch 00030: val_loss did not improve
-    Epoch 00031: val_loss did not improve
-    Epoch 00032: val_loss did not improve
-    Epoch 00033: val_loss did not improve
-    Epoch 00034: val_loss improved from 0.00022 to 0.00010, saving model to leafnet.h5
-    Epoch 00035: val_loss did not improve
-    Epoch 00036: val_loss did not improve
-    Epoch 00037: val_loss did not improve
-    Epoch 00038: val_loss did not improve
-    Epoch 00039: val_loss did not improve
-    Epoch 00040: val_loss did not improve
-    Epoch 00041: val_loss did not improve
-    Epoch 00042: val_loss did not improve
-    Epoch 00043: val_loss did not improve
-    Epoch 00044: val_loss did not improve
-    Epoch 00045: val_loss improved from 0.00010 to 0.00008, saving model to leafnet.h5
-    Epoch 00046: val_loss did not improve
-    Epoch 00047: val_loss did not improve
-    Epoch 00048: val_loss did not improve
-    Epoch 00049: val_loss did not improve
-    Epoch 00050: val_loss did not improve
-    Epoch 00051: val_loss did not improve
-    Epoch 00052: val_loss did not improve
-    Epoch 00053: val_loss did not improve
-    Epoch 00054: val_loss did not improve
-    Epoch 00055: val_loss did not improve
-    Epoch 00056: val_loss did not improve
-    Epoch 00057: val_loss did not improve
-    Epoch 00058: val_loss did not improve
-    Epoch 00059: val_loss did not improve
-    Epoch 00060: val_loss did not improve
-    Epoch 00061: val_loss did not improve
-    Epoch 00062: val_loss did not improve
-    Epoch 00063: val_loss did not improve
-    Epoch 00064: val_loss did not improve
-    Epoch 00065: val_loss did not improve
-    Epoch 00066: val_loss did not improve
-    Epoch 00067: val_loss did not improve
-    Epoch 00068: val_loss did not improve
-    Epoch 00069: val_loss did not improve
-    Epoch 00070: val_loss did not improve
-    Epoch 00071: val_loss did not improve
-    Epoch 00072: val_loss did not improve
-    Epoch 00073: val_loss did not improve
-    Epoch 00074: val_loss did not improve
-    Epoch 00075: val_loss did not improve
-    Epoch 00076: val_loss did not improve
-    Epoch 00077: val_loss did not improve
-    Epoch 00078: val_loss did not improve
-    Epoch 00079: val_loss did not improve
-    Epoch 00080: val_loss did not improve
-    Epoch 00081: val_loss did not improve
-    Epoch 00082: val_loss did not improve
-    Epoch 00083: val_loss did not improve
-    Epoch 00084: val_loss did not improve
-    Epoch 00085: val_loss did not improve
-    Epoch 00086: val_loss did not improve
-    Epoch 00087: val_loss did not improve
-    Epoch 00088: val_loss did not improve
-    Epoch 00089: val_loss did not improve
-    Epoch 00090: val_loss did not improve
-    Epoch 00091: val_loss did not improve
-    Epoch 00092: val_loss did not improve
-    Epoch 00093: val_loss did not improve
-    Epoch 00094: val_loss did not improve
-    Epoch 00095: val_loss did not improve
-    Epoch 00096: val_loss did not improve
-    Epoch 00097: val_loss did not improve
-    Epoch 00098: val_loss did not improve
-    Epoch 00099: val_loss did not improve
-    Epoch 00100: val_loss did not improve
-    Epoch 00101: val_loss did not improve
-    Epoch 00102: val_loss did not improve
-    Epoch 00103: val_loss did not improve
-    Epoch 00104: val_loss did not improve
-    Epoch 00105: val_loss did not improve
-    Epoch 00106: val_loss did not improve
-    Epoch 00107: val_loss did not improve
-    Epoch 00108: val_loss did not improve
-    Epoch 00109: val_loss did not improve
-    Epoch 00110: val_loss did not improve
-    Epoch 00111: val_loss did not improve
-    Epoch 00112: val_loss did not improve
-    Epoch 00113: val_loss did not improve
-    Epoch 00114: val_loss improved from 0.00008 to 0.00006, saving model to leafnet.h5
-    Epoch 00115: val_loss did not improve
-    Epoch 00116: val_loss did not improve
-    Epoch 00117: val_loss did not improve
-    Epoch 00118: val_loss did not improve
-    Epoch 00119: val_loss did not improve
-    Epoch 00120: val_loss did not improve
-    Epoch 00121: val_loss did not improve
-    Epoch 00122: val_loss did not improve
-    Epoch 00123: val_loss did not improve
-    Epoch 00124: val_loss did not improve
-    Epoch 00125: val_loss did not improve
-    Epoch 00126: val_loss did not improve
-    Epoch 00127: val_loss did not improve
-    Epoch 00128: val_loss did not improve
-
-
-
-    ---------------------------------------------------------------------------
-
-    KeyboardInterrupt                         Traceback (most recent call last)
-
-    <ipython-input-21-b076db4b6a04> in <module>()
-         31                               nb_val_samples=X_num_val.shape[0],
-         32                               verbose=0,
-    ---> 33                               callbacks=[best_model])
-         34 
-         35 print('Loading the best model...')
-
-
-    /Users/dereksnow/anaconda/lib/python2.7/site-packages/keras/engine/training.pyc in fit_generator(self, generator, samples_per_epoch, nb_epoch, verbose, callbacks, validation_data, nb_val_samples, class_weight, max_q_size, nb_worker, pickle_safe, initial_epoch)
-       1449                     outs = self.train_on_batch(x, y,
-       1450                                                sample_weight=sample_weight,
-    -> 1451                                                class_weight=class_weight)
-       1452                 except:
-       1453                     _stop.set()
-
-
-    /Users/dereksnow/anaconda/lib/python2.7/site-packages/keras/engine/training.pyc in train_on_batch(self, x, y, sample_weight, class_weight)
-       1224             ins = x + y + sample_weights
-       1225         self._make_train_function()
-    -> 1226         outputs = self.train_function(ins)
-       1227         if len(outputs) == 1:
-       1228             return outputs[0]
-
-
-    /Users/dereksnow/anaconda/lib/python2.7/site-packages/keras/backend/tensorflow_backend.pyc in __call__(self, inputs)
-       1094             feed_dict[tensor] = value
-       1095         session = get_session()
-    -> 1096         updated = session.run(self.outputs + [self.updates_op], feed_dict=feed_dict)
-       1097         return updated[:len(self.outputs)]
-       1098 
-
-
-    /Users/dereksnow/anaconda/lib/python2.7/site-packages/tensorflow/python/client/session.pyc in run(self, fetches, feed_dict, options, run_metadata)
-        370     try:
-        371       result = self._run(None, fetches, feed_dict, options_ptr,
-    --> 372                          run_metadata_ptr)
-        373       if run_metadata:
-        374         proto_data = tf_session.TF_GetBuffer(run_metadata_ptr)
-
-
-    /Users/dereksnow/anaconda/lib/python2.7/site-packages/tensorflow/python/client/session.pyc in _run(self, handle, fetches, feed_dict, options, run_metadata)
-        634     try:
-        635       results = self._do_run(handle, target_list, unique_fetches,
-    --> 636                              feed_dict_string, options, run_metadata)
-        637     finally:
-        638       # The movers are no longer used. Delete them.
-
-
-    /Users/dereksnow/anaconda/lib/python2.7/site-packages/tensorflow/python/client/session.pyc in _do_run(self, handle, target_list, fetch_list, feed_dict, options, run_metadata)
-        706     if handle is None:
-        707       return self._do_call(_run_fn, self._session, feed_dict, fetch_list,
-    --> 708                            target_list, options, run_metadata)
-        709     else:
-        710       return self._do_call(_prun_fn, self._session, handle, feed_dict,
-
-
-    /Users/dereksnow/anaconda/lib/python2.7/site-packages/tensorflow/python/client/session.pyc in _do_call(self, fn, *args)
-        713   def _do_call(self, fn, *args):
-        714     try:
-    --> 715       return fn(*args)
-        716     except errors.OpError as e:
-        717       message = compat.as_text(e.message)
-
-
-    /Users/dereksnow/anaconda/lib/python2.7/site-packages/tensorflow/python/client/session.pyc in _run_fn(session, feed_dict, fetch_list, target_list, options, run_metadata)
-        695         return tf_session.TF_Run(session, options,
-        696                                  feed_dict, fetch_list, target_list,
-    --> 697                                  status, run_metadata)
-        698 
-        699     def _prun_fn(session, handle, feed_dict, fetch_list):
-
-
-    KeyboardInterrupt: 
-
+    Epoch 00019-300 val significanlty improved. 
+    Truncating for turorial purpose. 
 
 
 ```python
@@ -1372,8 +1185,3 @@ yPred.tail()
 </div>
 
 
-
-
-```python
-
-```
