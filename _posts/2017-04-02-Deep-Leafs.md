@@ -5,6 +5,7 @@ table{
     border-spacing: 0;
     border:1px solid #000000;
     overflow-x: auto;
+    overflow: scroll;
 }
 
 th{
