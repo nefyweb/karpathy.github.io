@@ -1,6 +1,3 @@
-
-## Leafy Deeps 
-
 ---
 #### Model Description 
 
