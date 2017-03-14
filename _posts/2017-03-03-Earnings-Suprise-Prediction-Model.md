@@ -44,7 +44,7 @@ Pre-thesis results:
 -	The attached results have not been tested on a holdout set. It is of my believe that the accuracy would fall between a range of 55%-60% once this is done. However, this value can also improve with good feature and model selection procedures. 
 
 
-
+#### Model
 
 ---
 
