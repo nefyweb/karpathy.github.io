@@ -1,5 +1,55 @@
 
 
+#### Earnings Suprise Prediction Model (FPM)
+
+This model has been applied to earnings suprises, but would easily be transferable to predicting any unexpected financial event. 
+
+#### Description
+
+Predicting Surprises: The Application of Machine Learning Ensembles in Predicting Earnings Surprises.
+
+1. Introduction and Research 
+
+It is notoriously difficult to predict financial events and outcomes. Researchers and financial institutions often develop algorithms to predict the financial performance and outcomes of firms. Successful predictions are highly consequential: if used correctly it can lead to profitable trading strategies. Having the ability to better predict financial results can help with purchase, sell and hedging decisions. This paper focuses on the task of predicting future earnings surprises for firms in the S&P 500. This study focuses on machine learning methods since data relating to stocks can be categorised as non-stationary time series data allowing for interesting patterns and relationships to be uncovered. This study will focus on non-linear machine learning procedures to predict earnings surprises. In recent years’ numerous innovations in the field of machine learning allows for more accurate and generalizable results such as the commoditisation of deep learning techniques, advancements in GPU web services for parallel computing and model specific research.  To reasonably evaluate the proposal for this study I have trained initial models with attached results. 
+
+For this study I will, as outlined by Kuhn and Johnson (2013), select the best model by starting with the most flexible models after which I will investigate less opaque models and consider whether it reasonably approximates the performance of the more flexible and complex models. Investigating a suite of complex models helps to establish a performance ceiling. My preliminary results indicate that the more complex models do outperform. In finance research, the interpretability of empirical results performed on the basis of proving a theoretical hypothesis, often calls for causality. In this study, accuracy trumps the interpretability of the model, the study does not attempt to show the causality of previously uncovered features in explaining the result of an earnings surprise. Instead, the study focuses on the use of machine learning and the incorporation of a large bag of features in predicting financial outcomes such as earnings surprises. Ensemble models and deep learning models are very difficult to understand even by those who create them, this should, however, not stop us from using these models to identify their practical value in a field.
+
+Trained models can be verified by splitting the sample into a test and training set. To prevent overfitting, the final results will be calculated on an ‘out of sample’ holdout set to predict a generalizable accuracy score. If data-availability becomes an issue, a researcher can also employ cross-validation steps. The data used in the preliminary study stretches from 2005 to 2016, roughly allowing for 10 years of earnings data for all firms. The initial dataset has a little less than 20,000 quarterly earnings samples labelled by whether the estimates has been beaten (1) or whether it fell short to the actuals (0). 60% of the sample data is used to train the model. Due to the time relevance of the data, training over long periods might suffocate the future generalisability of the functional approximations, therefore, any increase in sample size should rather occur cross-sectionally. 
+
+Whether a company ‘misses’ or ‘beats’ expectations can have a substantial price impact, both immediately and over the course of the following days/weeks (Jones et al. 1970). Analysts and investors can succumb to many behavioural biases and conflicts of interest, research show that investors and analysts over extrapolate from past earnings (Givly et al, 1984). This study would circumvent biased decision-making by introducing a bag of normalised features (facts) to be passed into a range of classification models such as, k-nearest neighbours, support vector machine, decision tree, random forest, adaptive boosting and gradient boosting classifiers. These results will help with the implementation of an ensemble model and the possible inclusion of deep learning neural networks, the most likely candidate being an LST Recurrent Neural Network. Another approach would be to use an ensemble of SVM and a boosting classifier which might help to decrease errors and enhance generalisability. 
+
+A quarter has about 60 days. In my analysis I want to incorporate information, i.e. features, that occurs in a quarter to make prediction regarding the earnings estimate at the end of that quarter. The first bundle of features transforms down to a single number for each earnings estimate. I will also incorporate features that develop sequentially and use machine learning to identify patterns that form from 5, 10 and 20 days before the announcement. I believe that such an analysis will show some leakage of inside information and that the public data available will be enough for the learning models to classify the likelihood of an earnings surprise.  With this type of deep analysis there is the potential of a lot of statistical information being locked up in relationships of the features, which might not at first be apparent to human analysts as compared to that of learning algorithms. There are important traditional models of time series modelling that we would incorporate as features to identify the higher dimensional information as computed by the machine learning models. These statistical models include moving average, exponential smoothing averages and other.
+
+Machine learning has been used in finance in a number of studies. Bagheri et al. (2014) used an adaptive networked based fuzzy inference system to forecast financial time series for currencies. Hu et al. (2015) used a hybrid evolutionary trend following algorithms to introduce a trading algorithm which selects stocks based on different indicators.  De Oliveira et al. (2013) use economic and financial theory in combination with fundamental and technical and time series analysis to predict price behaviour with the use of artificial neural networks (ANN). Patel et al. (2015) compared multiple prediction models such as ANN, SVM and random forest. Booth et al. (2014) propose an expert system based on machine learning techniques to predict the return on seasonal events and develop a profitable trading strategy. The above mentioned studies inspired many of the benchmark models used in this study. I will also incorporate novel feature selection procedures and ensemble models to identify not only the baseline, but also the best accuracy achievable for the task at hand. I will report on the results of all the models to prohibit data snooping.
+
+The majority of research in this field focused on the price movements of stocks, indexes and currencies. These studies are also limited in sample size, most opting to analyse a handful number of stocks using daily data. It is of my view that it is difficult to rule out random results if the database is not wide enough. Very few studies look at financial outcomes, furthermore, no study has as yet used modern machine learning techniques to investigate the probability of financial events. This study can produce a novel system to help investors and market makers managing their stock ownership before earnings announcements, for not just profit maximisation, but also risk management purposes. Trading system strategies come from a large range of fields, be it econometric modelling, evolutionary computation, news mining or machine learning. In the 1960s trading rules based on technical indicators were said not to be profitable (Fama, Blume, 1966). However, these indicators were never specifically applied to event prediction. Xiao et al (2013) demonstrated the power of ensembles in financial market forecasting. They show that the flexibility of the ensemble approach is key to their ability to capture complex nonlinear relationships. All the studies that used ensembles demonstrated the ability to avoid overfitting compared to using standalone system. This study will also make use of ensemble techniques. 
+Hypothesis: 
+
+Ð	There is hidden relationships in technical information that can predict earnings surprises.
+Ð	The inclusion of manually engineered features will significantly improve model accuracy in predicting financial events.
+Ð	The combination of financial and technical elements will significantly increase the accuracy of predicting earnings surprises.
+Ð	The addition of twitter and newspaper NLP analysis will further strengthen the model accuracy (possibly a separate study).
+Ð	For financial prediction a more comprehensive model with more features and data will outperform a smaller dataset with less features.
+Ð	An ensemble of models would outperform single and benchmark models.
+Ð	A final neural networks model that uses traditional machine learning outputs as its inputs will outperform an ensemble of classifiers mean.
+Ð	Hyperparameter optimisation of the learning rate, the number of estimators for boosting, the number of nodes will lead to better accuracy overall.
+Ð	Smaller firm accuracy would be higher than large firm accuracy as a result of being less covered/scrutinised and more informationally inefficient.
+
+Pre-thesis results: 
+
+Ð	Benchmark: using the test data, the analyst estimate is 5% below the actual earnings 43% of the time. 
+Ð	The trained model predicts a 60%+ accuracy as to whether the analyst’s estimate would be 5% below the actual earnings.  
+Ð	I trained the model on beating the estimate by 5% to ensure that there would be a stock price reaction.
+Ð	Therefore, with the preliminary model, using 5 hand engineered and two time relevant predictors, the model can predict with more than 60% accuracy whether the analyst’s estimates will be beaten by the actuals with more than 5%, i.e. predict an earnings surprise. 
+Ð	The attached results have not been tested on a holdout set. It is of my believe that the accuracy would fall between a range of 55%-60% once this is done. However, this value can also improve with good feature and model selection procedures. 
+
+
+
+
+---
+
+
+
 ```python
 from pandas import Series, DataFrame
 import pandas as pd
