@@ -281,3 +281,309 @@ while True:
         print(info["public_score"])
         break
 ```
+Following is two scripts that are in most parts different, which also scored high.
+
+
+
+```python
+# Rollng Regression Script: top 14%
+
+import kagglegym
+import numpy as np
+import pandas as pd
+from sklearn import linear_model as lm
+from sklearn.ensemble import ExtraTreesRegressor
+
+# The "environment" is our interface for code competitions
+env = kagglegym.make()
+# We get our initial observation by calling "reset"
+o = env.reset()
+# Get the train dataframe
+
+excl = [env.ID_COL_NAME, env.SAMPLE_COL_NAME, env.TARGET_COL_NAME, env.TIME_COL_NAME]
+col = [c for c in o.train.columns if c not in excl]
+
+train = pd.read_hdf('../input/train.h5')
+train = train[col]
+d_mean= train.median(axis=0)
+
+train = o.train[col]
+n = train.isnull().sum(axis=1)
+for c in train.columns:
+    train[c + '_nan_'] = pd.isnull(train[c])
+    d_mean[c + '_nan_'] = 0
+train_1 = train.fillna(d_mean)
+train_1['znull'] = n
+n = []
+
+rfr = ExtraTreesRegressor(n_estimators=30, max_depth=4, n_jobs=-1, random_state=17, verbose=0)
+model1 = rfr.fit(train_1, o.train['y'])
+
+train = o.train
+cols_to_use = ['technical_20','technical_30','technical_13','y']
+excl = ['id', 'y', 'timestamp']
+allcol = [c for c in train.columns if ((c in excl)|(c in cols_to_use))]
+allcol1 = [c for c in allcol if not (c == 'y')]
+train=train[allcol]
+
+low_y_cut = -0.075
+high_y_cut = 0.075
+y_is_above_cut = (o.train.y > high_y_cut)
+y_is_below_cut = (o.train.y < low_y_cut)
+y_is_within_cut = (~y_is_above_cut & ~y_is_below_cut)
+
+# mean_values = train.median(axis=0)
+#train.fillna(mean_values, inplace=True)
+
+pred = np.array(train[cols_to_use])
+tis=np.array(train.loc[:, 'timestamp'],dtype=int)
+ids=np.array(train.loc[:, 'id'],dtype=int)
+del train
+
+predtab=np.zeros((max(tis)+1,max(ids)+1,pred.shape[1]))
+predtab[:,:,:]=np.nan
+for c in range(0,max(ids)+1) :
+  sel = np.array(ids==c)
+  predtab[tis[sel],c,:]=pred[sel,:]
+del pred,tis,ids
+
+gconst = [1,-1]
+for iter in range(0,2):
+    dt=gconst[0]*predtab[:-1,:,0:3]+gconst[1]*predtab[1:,:,0:3]
+    trg=predtab[:-1,:,-1]
+    ok=np.array((np.sum(np.isnan(dt),axis=2)==0)&np.isfinite(trg)&(trg<high_y_cut)&(trg>low_y_cut))
+    met1=lm.LinearRegression()
+    dt = dt[np.repeat(ok.reshape((ok.shape[0],ok.shape[1],1)),dt.shape[2],axis=2)].reshape(np.sum(ok),dt.shape[2])
+    met1.fit (dt,trg[ok])
+    r2 = met1.score(dt,trg[ok])
+    dconst = met1.coef_
+    print('Dconst=',dconst,' R=',np.sqrt(r2))
+    
+    dt=np.dot(predtab[:,:,0:3],dconst).reshape((predtab.shape[0],predtab.shape[1],1))
+    dt=np.concatenate((dt[:-1,:,:],dt[1:,:,:]),axis=2)
+    ok=np.array((np.sum(np.isnan(dt),axis=2)==0)&np.isfinite(trg)&(trg<high_y_cut)&(trg>low_y_cut))
+    met1=lm.LinearRegression()
+    dt = dt[np.repeat(ok.reshape((ok.shape[0],ok.shape[1],1)),dt.shape[2],axis=2)].reshape(np.sum(ok),dt.shape[2])
+    met1.fit (dt,trg[ok])
+    r2 = met1.score(dt,trg[ok])
+    gconst = met1.coef_
+    print('Gconst=',gconst,' R=',np.sqrt(r2))
+del dt, trg, ok
+
+def expandmas2 (mas,n):
+    if (mas.shape[1]<=n):
+        mas1=np.zeros((mas.shape[0],int(n*1.2+1)))
+        for i in range(0,mas.shape[0]):
+            mas1[i,:]=mas[i,-1]
+        mas1[:,:mas.shape[1]]=mas
+        mas = mas1
+    return mas
+def expandmas (mas,n,m):
+    if (mas.shape[0]<=n):
+        mas1=np.zeros((int(n*1.2+1),mas.shape[1],mas.shape[2]))
+        mas1[:,:,:]=np.nan
+        mas1[:mas.shape[0],:mas.shape[1],:]=mas
+        mas = mas1
+    if (mas.shape[1]<=m):
+        mas1=np.zeros((mas.shape[0],int(m*1.2+1),mas.shape[2]))
+        mas1[:,:,:]=np.nan
+        mas1[:mas.shape[0],:mas.shape[1],:]=mas
+        mas = mas1
+    return mas
+
+realhist = predtab.shape[0]
+coef = np.zeros((1,realhist))
+def trainrolling (tset):
+    for t in tset :            
+            s0=max(t-1,1)
+            y=predtab[s0,:,-1]
+            x=predtab[s0-1,:,-1]
+            ok=np.array(np.isfinite(x)&np.isfinite(y)&(x>low_y_cut)&(x<high_y_cut)&(y<high_y_cut)&(y>low_y_cut))
+#            ok=np.array(np.isfinite(x)&np.isfinite(y))
+            if np.sum(ok)==0:
+                    coef[0,t]=coef[0,t-1]
+            else:                    
+                    x1=x[ok]
+                    y1=y[ok]
+#                    alp1=0.65*(np.std(x1)+np.std(y1))*max(200,x1.shape[0])
+                    alp1=np.std(np.concatenate((x1,y1)))*max(200,x1.shape[0])
+                    x1=np.concatenate((x1,[alp1]))
+                    y1=np.concatenate((y1,[alp1*coef[0,t-1]]))
+                    coef[0,t]=np.sum(x1*y1)/np.sum(x1*x1)
+            if t>=1:
+                res = predtab[t-1,:,-1]*coef[0,t]
+    return res,coef
+
+reward=0
+n = 0
+rewards = []
+t0 = 0
+while True:
+    test = o.features[allcol1].copy()
+#    test['id'] = observation.target.id 
+#    test.fillna(mean_values, inplace=True)
+    pred=np.array(test[cols_to_use[:-1]])
+    maxts = int(max(test['timestamp']))    
+    maxid = int(max(test['id']))
+    predtab=expandmas (predtab,maxts,maxid)
+    coef =expandmas2 (coef,maxts)
+
+    resout = np.zeros((pred.shape[0]))
+    for t in range(int(min(test['timestamp'])),maxts+1) :
+        sel=np.array(test['timestamp']==t)
+        ids=np.array(test.loc[sel,'id'],dtype=int)
+                
+        predtab[t,ids,0:pred.shape[1]]=pred[sel,:]
+        if (t<1):
+            continue
+        old = predtab[t-1,ids,-1]
+#        new = np.dot(predtab[t,ids,0:3]-predtab[t-1,ids,0:3],dconst)
+        new = np.dot(predtab[t-1:t+1,ids,0:3],dconst)
+        new = np.dot(new.T,gconst)
+        old[np.isnan(old)]=new[np.isnan(old)]
+        predtab[t-1,ids,-1]=old
+        t0=int(min(t0,t-1))
+        
+        res,coef = trainrolling (range(t0+1,t+1))
+        res = res[ids]
+        res [np.isnan(res)]=0.
+        resout[sel]=res
+        t0=t     
+    test = o.features[col]
+    n = test.isnull().sum(axis=1)
+    for c in test.columns:
+        test[c + '_nan_'] = pd.isnull(test[c])
+    test = test.fillna(d_mean)
+    test['znull'] = n
+
+    o.target.y = (resout.clip(low_y_cut, high_y_cut)*0.34) + (model1.predict(test).clip(low_y_cut, high_y_cut) * 0.66)
+    o.target.y = o.target.y
+    #observation.target.fillna(0, inplace=True)
+    target = o.target
+    timestamp = o.features["timestamp"][0]
+    if timestamp % 100 == 0:
+        print("Timestamp #{}".format(timestamp))
+        print(np.mean(rewards))
+
+    o, reward, done, info = env.step(target)
+#    print(reward)
+    if done:
+        break
+    rewards.append(reward)
+    n = n + 1
+print(info)
+
+```
+
+
+```python
+# Outliers Script top 20%
+
+import kagglegym
+import numpy as np
+import pandas as pd
+
+# sklearn libraries
+from sklearn.ensemble import ExtraTreesRegressor
+from sklearn.linear_model import LinearRegression
+
+import numpy as np # linear algebra
+import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+pd.set_option('display.max_columns', 120)
+
+environment = kagglegym.make() # This creates an environment in the API for me to play in
+observation = environment.reset() # Resets to first observations "view of what you can see presently"
+
+excl = [environment.ID_COL_NAME, environment.TARGET_COL_NAME, environment.TIME_COL_NAME,
+environment.SAMPLE_COL_NAME]
+col = [c for c in observation.train.columns if c not in excl]
+
+from scipy import stats
+
+df_old = observation.train
+df = df_old[(np.abs(stats.zscore(df_old["y"])) < 3.6)]
+#df = observation.train
+df_full = pd.read_hdf('../input/train.h5')
+d_mean= df[col].mean(axis=0)
+
+
+min_y = df["y"].min()
+max_y = df["y"].max()
+print (min_y, max_y)
+
+X_train =df[col]
+n = X_train.isnull().sum(axis=1)
+
+for c in col: 
+    r = pd.isnull(X_train.loc[:, c])
+    X_train[c + '_nan_'] = r  
+    d_mean[c + '_nan_'] = 0                                     
+
+X_train = X_train.fillna(d_mean)
+df = df.fillna(d_mean)
+X_train['znull'] = n 
+n = []
+
+cols_to_use = ['technical_30', 'technical_20', 'fundamental_11', 'technical_19']
+"""['technical_30', 'technical_20', 'fundamental_11', 'technical_27', 'technical_19', 'technical_35',
+'technical_11', 'technical_2', 'technical_34', 'fundamental_53', 'fundamental_51',
+'fundamental_58']"""
+
+#observation = environment.reset()
+
+rfr = ExtraTreesRegressor(n_estimators=100, max_depth=4, n_jobs=-1, random_state=17, verbose=0)
+fit_one = rfr.fit(X_train, df["y"].values)
+
+
+lr = LinearRegression()
+# See what happend if you change this to X_full
+fit_two = lr.fit(np.array(df[cols_to_use]), df["y"].values)
+
+X_train= []
+ymean_dict = dict(observation.train.groupby(["id"])["y"].mean())
+
+
+#observation = environment.reset()
+
+while True:
+    X_test = observation.features[col]
+    #I reckoned what happened here is that the features column is a different set of data. 
+    n = X_test.isnull().sum(axis=1)
+    for c in X_test.columns:
+        X_test[c + '_nan_'] = pd.isnull(X_test[c])
+    X_test = X_test.fillna(d_mean)
+    X_test['znull'] = n
+    
+    temp = observation.features.fillna(d_mean)
+    X_test_two = np.array(temp[cols_to_use])
+    
+    pred = observation.target
+    
+    pred['y'] = (fit_one.predict(X_test).clip(min_y, max_y) * 0.65) 
+    + (fit_two.predict(X_test_two).clip(min_y, max_y)* 0.35)
+    pred['y'] = pred.apply(lambda r: 0.95 * r['y'] + 0.05 * ymean_dict[r['id']] if r['id'] in ymean_dict else r['y'], axis = 1)
+    pred['y'] = [float(format(x, '.6f')) for x in pred['y']]
+   
+    timestamp = temp["timestamp"][0]
+    if timestamp % 100 == 0:
+        print("Timestamp #{}".format(timestamp))
+        
+    observation, reward, done, info = environment.step(pred)
+    if done:
+        break
+info
+
+
+#0.0115
+
+
+
+
+```
+
+
+
+
