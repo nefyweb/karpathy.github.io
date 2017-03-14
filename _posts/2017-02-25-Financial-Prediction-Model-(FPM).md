@@ -1,3 +1,5 @@
+
+
 #### Financial Prediction Model (FPM)
 
 The FPM has applications in predicting volatile time-series information. The features can be of any kind as long as it is numerically represented. In many time-series models it is essetialy to create hand engineered features, in this scenario lagging certain feautures lead to much better results than not doing so.  
