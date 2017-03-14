@@ -25,23 +25,23 @@ Machine learning has been used in finance in a number of studies. Bagheri et al.
 The majority of research in this field focused on the price movements of stocks, indexes and currencies. These studies are also limited in sample size, most opting to analyse a handful number of stocks using daily data. It is of my view that it is difficult to rule out random results if the database is not wide enough. Very few studies look at financial outcomes, furthermore, no study has as yet used modern machine learning techniques to investigate the probability of financial events. This study can produce a novel system to help investors and market makers managing their stock ownership before earnings announcements, for not just profit maximisation, but also risk management purposes. Trading system strategies come from a large range of fields, be it econometric modelling, evolutionary computation, news mining or machine learning. In the 1960s trading rules based on technical indicators were said not to be profitable (Fama, Blume, 1966). However, these indicators were never specifically applied to event prediction. Xiao et al (2013) demonstrated the power of ensembles in financial market forecasting. They show that the flexibility of the ensemble approach is key to their ability to capture complex nonlinear relationships. All the studies that used ensembles demonstrated the ability to avoid overfitting compared to using standalone system. This study will also make use of ensemble techniques. 
 Hypothesis: 
 
-Ð	There is hidden relationships in technical information that can predict earnings surprises.
-Ð	The inclusion of manually engineered features will significantly improve model accuracy in predicting financial events.
-Ð	The combination of financial and technical elements will significantly increase the accuracy of predicting earnings surprises.
-Ð	The addition of twitter and newspaper NLP analysis will further strengthen the model accuracy (possibly a separate study).
-Ð	For financial prediction a more comprehensive model with more features and data will outperform a smaller dataset with less features.
-Ð	An ensemble of models would outperform single and benchmark models.
-Ð	A final neural networks model that uses traditional machine learning outputs as its inputs will outperform an ensemble of classifiers mean.
-Ð	Hyperparameter optimisation of the learning rate, the number of estimators for boosting, the number of nodes will lead to better accuracy overall.
-Ð	Smaller firm accuracy would be higher than large firm accuracy as a result of being less covered/scrutinised and more informationally inefficient.
+-	There is hidden relationships in technical information that can predict earnings surprises.
+-	The inclusion of manually engineered features will significantly improve model accuracy in predicting financial events.
+-	The combination of financial and technical elements will significantly increase the accuracy of predicting earnings surprises.
+-	The addition of twitter and newspaper NLP analysis will further strengthen the model accuracy (possibly a separate study).
+-	For financial prediction a more comprehensive model with more features and data will outperform a smaller dataset with less features.
+-	An ensemble of models would outperform single and benchmark models.
+-	A final neural networks model that uses traditional machine learning outputs as its inputs will outperform an ensemble of classifiers mean.
+-	Hyperparameter optimisation of the learning rate, the number of estimators for boosting, the number of nodes will lead to better accuracy overall.
+-	Smaller firm accuracy would be higher than large firm accuracy as a result of being less covered/scrutinised and more informationally inefficient.
 
 Pre-thesis results: 
 
-Ð	Benchmark: using the test data, the analyst estimate is 5% below the actual earnings 43% of the time. 
-Ð	The trained model predicts a 60%+ accuracy as to whether the analyst’s estimate would be 5% below the actual earnings.  
-Ð	I trained the model on beating the estimate by 5% to ensure that there would be a stock price reaction.
-Ð	Therefore, with the preliminary model, using 5 hand engineered and two time relevant predictors, the model can predict with more than 60% accuracy whether the analyst’s estimates will be beaten by the actuals with more than 5%, i.e. predict an earnings surprise. 
-Ð	The attached results have not been tested on a holdout set. It is of my believe that the accuracy would fall between a range of 55%-60% once this is done. However, this value can also improve with good feature and model selection procedures. 
+-	Benchmark: using the test data, the analyst estimate is 5% below the actual earnings 43% of the time. 
+-	The trained model predicts a 60%+ accuracy as to whether the analyst’s estimate would be 5% below the actual earnings.  
+-	I trained the model on beating the estimate by 5% to ensure that there would be a stock price reaction.
+-	Therefore, with the preliminary model, using 5 hand engineered and two time relevant predictors, the model can predict with more than 60% accuracy whether the analyst’s estimates will be beaten by the actuals with more than 5%, i.e. predict an earnings surprise. 
+-	The attached results have not been tested on a holdout set. It is of my believe that the accuracy would fall between a range of 55%-60% once this is done. However, this value can also improve with good feature and model selection procedures. 
 
 
 
