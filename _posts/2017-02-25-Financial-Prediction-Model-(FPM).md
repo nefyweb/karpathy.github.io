@@ -1,18 +1,16 @@
-
--------
 #### Financial Prediction Model (FPM)
 
 The FPM has applications in predicting volatile time-series information. The features can be of any kind as long as it is numerically represented. In many time-series models it is essetialy to create hand engineered features, in this scenario lagging certain feautures lead to much better results than not doing so.  
 
 
-##### Finance
+#### Finance
 In finance a model similar to what is created here, can be used to predict the future movement of asset prices. As expected an extra tree regressor (or random forest if less constraint) including linear regressions on important variables led to low cross validated errors. 
 
 - Asset pricing prediction and modelling.  
 - Econcomic forecasts and decision making. 
 - Modelling a time series of a firm or individual's operating risk. 
 
-##### Business 
+#### Business 
 Similar to the finance applications, there are thousands of opportunities to improve your internal business management.   
 
 - Tracking and predicting on the time series of operational data, such as dataroom tempreture, wind-turbine speed etc to increase performance and efficiency. 
