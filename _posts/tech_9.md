@@ -30,55 +30,6 @@ def warn(*args, **kwargs): pass
 from sklearn.preprocessing import LabelEncoder
 from sklearn.preprocessing import StandardScaler
 
-
-```
-
-
-    ---------------------------------------------------------------------------
-
-    ValueError                                Traceback (most recent call last)
-
-    <ipython-input-1-e4fd927b588c> in <module>()
-         11 
-         12 #from sklearn.cross_validation import train_test_split
-    ---> 13 from sklearn import metrics
-         14 
-         15 from sklearn.metrics import accuracy_score, log_loss
-
-
-    /Users/dereksnow/anaconda/envs/27clean/lib/python2.7/site-packages/sklearn/__init__.py in <module>()
-         55 else:
-         56     from . import __check_build
-    ---> 57     from .base import clone
-         58     __check_build  # avoid flakes unused variable error
-         59 
-
-
-    /Users/dereksnow/anaconda/envs/27clean/lib/python2.7/site-packages/sklearn/base.py in <module>()
-          9 from scipy import sparse
-         10 from .externals import six
-    ---> 11 from .utils.fixes import signature
-         12 
-         13 
-
-
-    /Users/dereksnow/anaconda/envs/27clean/lib/python2.7/site-packages/sklearn/utils/__init__.py in <module>()
-          8 import warnings
-          9 
-    ---> 10 from .murmurhash import murmurhash3_32
-         11 from .validation import (as_float_array,
-         12                          assert_all_finite,
-
-
-    numpy.pxd in init sklearn.utils.murmurhash (sklearn/utils/murmurhash.c:5029)()
-
-
-    ValueError: numpy.dtype has the wrong size, try recompiling
-
-
-
-```python
-
 ```
 
 
