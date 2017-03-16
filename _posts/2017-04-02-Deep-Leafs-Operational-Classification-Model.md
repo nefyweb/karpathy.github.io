@@ -1,4 +1,3 @@
-[title](https://www.kaggle.com/sonder)
 <div>
 <style>
 table{
@@ -63,6 +62,7 @@ Similar to the finance applications, there are thousands of opportunities to imp
 ---
 
 #### Model Description 
+[Leaf Classification](https://www.kaggle.com/sonder)
 
 The first model we use is **sequential** from the **Keras** **API** and it is an **MLP** model for which I specified certain paramaters.
 
