@@ -45,7 +45,7 @@ img {
 The DL model is ensemble spread over two types of data, textual and image data for the purpose of classification. Image classificaton has may applications in business and indepth financial speculation and analysis. 
 
 The textual data here comes from sensory measurement information as it is presented in a quantative fashion. The data gatherers therefore also took other type of measurement. 
-
+[Finance](#finance)
 #### Finance
 There are countless opportunities for more speculative financial predictions and also for indepth analysis that can be invaluable for  choosing amongst stocks. 
 
