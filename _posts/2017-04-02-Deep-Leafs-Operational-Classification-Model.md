@@ -59,7 +59,7 @@ Similar to the finance applications, there are thousands of opportunities to imp
 - Conveyer belt classification for quality management, to identify whether the product is up to standards, this can include weight, size smell and texture measurements all of which can be fed into a mode simlar to DL. A real world example of this is a farmer using classification models to sort through his cucumber harvest. 
 - Imagery for inventory management, where inventory can not easily be quantatively stated, such as with piles of cement, water levels or other commoditee type goods.
 
-[Finance](#finance)
+
 ---
 
 #### Model Description 
@@ -67,7 +67,7 @@ Similar to the finance applications, there are thousands of opportunities to imp
 
 The first model we use is **sequential** from the **Keras** **API** and it is an **MLP** model for which I specified certain paramaters.
 
-| Terminology        | Description         | 
+| Terminology , [Finance](#finance)       | Description         | 
 | ------------- |-------------| 
 |Keras     | Is a high-level neural network library | 
 |Sequential     | One of the two types of Keras Models | 
