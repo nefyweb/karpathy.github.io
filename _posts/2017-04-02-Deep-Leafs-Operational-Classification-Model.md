@@ -45,7 +45,7 @@ img {
 The DL model is ensemble spread over two types of data, textual and image data for the purpose of classification. Image classificaton has may applications in business and indepth financial speculation and analysis. 
 
 The textual data here comes from sensory measurement information as it is presented in a quantative fashion. The data gatherers therefore also took other type of measurement. 
-[Finance](#finance)
+
 #### Finance
 There are countless opportunities for more speculative financial predictions and also for indepth analysis that can be invaluable for  choosing amongst stocks. 
 
@@ -58,7 +58,8 @@ Similar to the finance applications, there are thousands of opportunities to imp
 
 - Conveyer belt classification for quality management, to identify whether the product is up to standards, this can include weight, size smell and texture measurements all of which can be fed into a mode simlar to DL. A real world example of this is a farmer using classification models to sort through his cucumber harvest. 
 - Imagery for inventory management, where inventory can not easily be quantatively stated, such as with piles of cement, water levels or other commoditee type goods.
- 
+
+[Finance](#finance)
 ---
 
 #### Model Description 
