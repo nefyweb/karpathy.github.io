@@ -1,4 +1,45 @@
+<div>
+<style>
+table{
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:1px solid #000000;
+    overflow-x: auto;
+    overflow: scroll;
+}
 
+th{
+    border:1px solid #000000;
+}
+
+td{
+    border:1px solid #000000;
+}
+
+th, td {
+    padding: 7px;
+    text-align: left;
+tr:hover {background-color: #e7f6fd}
+}
+
+th {
+    background-color: #e7f6fd;
+    color: #606060 ;
+}
+
+img.center {
+    display: block;
+    margin: 0 auto;
+    padding: 5px 5px 5px 5px;
+}
+
+img {
+    display: block;
+    margin: 0 auto;
+    padding: 5px 5px 5px 5px;
+}
+</style>
+</div>
 
 ```python
 import pandas as pd
