@@ -1,12 +1,10 @@
+----------
 
-Thank you for opening this script!
+###Model Definition 
 
-I have made all efforts to document each and every step involved in the prediction process so that this notebook acts as a good starting point for new Kagglers and new machine learning enthusiasts.
+This insurance model seeks to explain all the steps involved in the prediction process. 
 
-Please **upvote** this kernel so that it reaches the top of the chart and is easily locatable by new users. Your comments on how we can improve this kernel is welcome. Thanks.
 
-My other exploratory studies can be accessed here :
-https://www.kaggle.com/sharmasanthosh/kernels
 ***
 ## Data statistics
 * Shape
