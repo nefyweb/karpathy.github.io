@@ -58,7 +58,8 @@ date_x.plot(secondary_y='Frequency', figsize=(20, 10))
 
 
 
-<img src="/assets/red_hat/output_5_1.png" alt="Drawing" style="width: 350px;"/>
+<img src="/assets/red_hat/output_5_1.png" alt="Drawing" style="width: 700px;"/>
+<img src="/assets/red_hat/output_5_1.png" alt="Drawing" style="width: 100%;"/>
 ![png](/assets/red_hat/output_5_1.png)
 
 
