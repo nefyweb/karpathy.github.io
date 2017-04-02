@@ -57,11 +57,7 @@ date_x.plot(secondary_y='Frequency', figsize=(20, 10))
     <matplotlib.axes._subplots.AxesSubplot at 0x7f6f58b44e10>
 
 
-
-<img src="/assets/red_hat/output_5_1.png" alt="Drawing" style="width: 700px;"/>
 <img src="/assets/red_hat/output_5_1.png" alt="Drawing" style="width: 100%;"/>
-![png](/assets/red_hat/output_5_1.png)
-
 
 This plot shows some very interesting findings. There appears to be a very apparent weekly pattern, where on weekends there are much less events, as well as the probability of a event being a '1' class being much lower.
 We can see that during the week the classes are pretty balanced at ~0.5 while on weekends they drop to 0.4-0.3 (this could be very useful information).
@@ -85,18 +81,11 @@ date_y[2*i:].plot(secondary_y='Frequency', figsize=(20, 5), title='date_y Year 3
     <matplotlib.axes._subplots.AxesSubplot at 0x7f6f58d742e8>
 
 
+<img src="/assets/red_hat/output_7_1.png" alt="Drawing" style="width: 100%;"/>
 
+<img src="/assets/red_hat/output_7_2.png" alt="Drawing" style="width: 100%;"/>
 
-![png](/assets/red_hat/output_7_1.png)
-<img src="/assets/red_hat/output_7_1.png" alt="Drawing" style="width: 350px;"/>
-
-
-![png](/assets/red_hat/output_7_2.png)
-
-
-
-![png](/assets/red_hat/output_7_3.png)
-
+<img src="/assets/red_hat/output_7_3.png" alt="Drawing" style="width: 100%;"/>
 
 There also appears to be a weekly structure to the date_y variable, although it isn't as cleanly visible. However, the class probabilities appear to swing much lower (reaching 0.2 on a weekly basis)
 We have to take these class probabilities with a grain of salt however, since we are hitting very low numbers of samples in each day with the date_y (in the hundreds).
@@ -127,16 +116,11 @@ date_y_freq[2*i:].plot(secondary_y='Testing set', figsize=(20, 8),
 
 
 
+<img src="/assets/red_hat/output_9_1.png" alt="Drawing" style="width: 100%;"/>
 
-![png](/assets/red_hat/output_9_1.png)
+<img src="/assets/red_hat/output_9_2.png" alt="Drawing" style="width: 100%;"/>
 
-
-
-![png](/assets/red_hat/output_9_2.png)
-
-
-
-![png](/assets/red_hat/output_9_3.png)
+<img src="/assets/red_hat/output_9_3.png" alt="Drawing" style="width: 100%;"/>
 
 
 This gives us some interesting results. For date_x, we observe in the graph (and also in the high correlation value) that the training and testing sets have a very similar structure - this provides strong evidence that the training and testing sets are split based on people, and not based on time or some other unknown factor. Once again, we also observe the peaks (outliers?) in the September/October region.
