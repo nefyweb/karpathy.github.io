@@ -1,13 +1,5 @@
+This notebook follows along every step of the prediction process and gives a good overview of the process necessary to churn out good numbers. 
 
-Thank you for opening this script!
-
-I have made all efforts to document each and every step involved in the prediction process so that this notebook acts as a good starting point for new Kagglers and new machine learning enthusiasts.
-
-Please **upvote** this kernel so that it reaches the top of the chart and is easily locatable by new users. Your comments on how we can improve this kernel is welcome. Thanks.
-
-My other exploratory studies can be accessed here :
-https://www.kaggle.com/sharmasanthosh/kernels
-***
 ## Data statistics
 * Shape
 * Peek
@@ -49,10 +41,6 @@ https://www.kaggle.com/sharmasanthosh/kernels
 ***
 
 ## Load raw data:
-
-Information about all the attributes can be found here:
-
-https://www.kaggle.com/c/allstate-claims-severity/data
 
 Learning: 
 We need to predict the 'loss' based on the other attributes. Hence, this is a regression problem.
