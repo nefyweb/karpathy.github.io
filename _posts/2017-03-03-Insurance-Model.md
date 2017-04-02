@@ -1,6 +1,7 @@
-----------
 
-###Model Definition 
+
+
+
 
 This insurance model seeks to explain all the steps involved in the prediction process. 
 
@@ -45,13 +46,6 @@ This insurance model seeks to explain all the steps involved in the prediction p
 
 ## Make Predictions
 ***
-
-## Load raw data:
-
-Information about all the attributes can be found here:
-
-https://www.kaggle.com/c/allstate-claims-severity/data
-
 Learning: 
 We need to predict the 'loss' based on the other attributes. Hence, this is a regression problem.
 
