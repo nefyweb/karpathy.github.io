@@ -1,4 +1,7 @@
-
+.thumbnail img {
+    max-height: 100%;
+    max-width: 100%;
+}
 
 ```python
 import numpy as np # linear algebra
