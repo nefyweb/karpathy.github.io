@@ -1,7 +1,3 @@
-.thumbnail img {
-    max-height: 100%;
-    max-width: 100%;
-}
 
 ```python
 import numpy as np # linear algebra
@@ -62,8 +58,8 @@ date_x.plot(secondary_y='Frequency', figsize=(20, 10))
 
 
 
-
-![png](/assets/red_hat/output_5_1.png){ width=50% }
+<img src="/assets/red_hat/output_5_1.png" alt="Drawing" style="width: 350px;"/>
+![png](/assets/red_hat/output_5_1.png)
 
 
 This plot shows some very interesting findings. There appears to be a very apparent weekly pattern, where on weekends there are much less events, as well as the probability of a event being a '1' class being much lower.
@@ -90,15 +86,15 @@ date_y[2*i:].plot(secondary_y='Frequency', figsize=(20, 5), title='date_y Year 3
 
 
 
-![png](/assets/red_hat/output_7_1.png){ width=50% }
+![png](/assets/red_hat/output_7_1.png)
+<img src="/assets/red_hat/output_7_1.png" alt="Drawing" style="width: 350px;"/>
+
+
+![png](/assets/red_hat/output_7_2.png)
 
 
 
-![png](/assets/red_hat/output_7_2.png =250x)
-
-
-
-![png](/assets/red_hat/output_7_3.png =250x)
+![png](/assets/red_hat/output_7_3.png)
 
 
 There also appears to be a weekly structure to the date_y variable, although it isn't as cleanly visible. However, the class probabilities appear to swing much lower (reaching 0.2 on a weekly basis)
