@@ -253,8 +253,7 @@ plt.ylabel("Frequency")
 
 
 
-![png](/assets/output_3_1.png)
-![png](output_3_1.png)
+![png](/assets/credit_card/output_3_1.png)
 
 
 The data is clearly unbalanced and the amount of legitimate transactions far outdo the fraudulant transactions. This type of data should be analysed with absolute care due to the high benchmark accuracy achieved from merely selecting the most frequently occured target class.
@@ -1293,18 +1292,18 @@ plt.show()
 
 
 
-![png](output_17_1.png)
+![png](/assets/credit_card/output_17_1.png)
 
 
     Recall metric in the testing dataset:  0.945578231293
 
 
 
-![png](output_17_3.png)
+![png](/assets/credit_card/output_17_3.png)
 
 
 
-![png](output_17_4.png)
+![png](/assets/credit_card/output_17_4.png)
 
 
 Logistic regression classifier - Skewed data
@@ -1430,7 +1429,7 @@ for i in thresholds:
 
 
 
-![png](output_21_1.png)
+![png](/assets/credit_card/output_21_1.png)
 
 
 The pattern is very clear: the more you lower the required probability to put a certain in the class "1" category, more records will be put in that bucket.¶
@@ -1470,7 +1469,7 @@ for i,color in zip(thresholds,colors):
 ```
 
 
-![png](output_23_0.png)
+![png](/assets/credit_card/output_23_0.png)
 
 
 ## What about with tensorflow
@@ -2044,7 +2043,7 @@ plt.show()
 
 
 
-![png](output_26_1.png)
+![png](/assets/credit_card/output_26_1.png)
 
 
     Fraud
@@ -2071,11 +2070,11 @@ plt.show()
 
 
 
-![png](output_26_3.png)
+![png](/assets/credit_card/output_26_3.png)
 
 
 
-![png](output_26_4.png)
+![png](/assets/credit_card/output_26_4.png)
 
 
     /home/dsno800/anaconda3/lib/python3.5/site-packages/statsmodels/nonparametric/kdetools.py:20: VisibleDeprecationWarning: using a non-integer number instead of an integer will result in an error in the future
@@ -2083,7 +2082,7 @@ plt.show()
 
 
 
-![png](output_26_6.png)
+![png](/assets/credit_card/output_26_6.png)
 
 
     1.0    284315
@@ -2106,15 +2105,15 @@ plt.show()
 
 
 
-![png](output_26_8.png)
+![png](/assets/credit_card/output_26_8.png)
 
 
 
-![png](output_26_9.png)
+![png](/assets/credit_card/output_26_9.png)
 
 
 
-![png](output_26_10.png)
+![png](/assets/credit_card/output_26_10.png)
 
 
 ## Using SMOTE to predict
@@ -2251,7 +2250,7 @@ plt.xlabel('False Positive Rate')
 
 
 
-![png](output_28_2.png)
+![png](/assets/credit_card/output_28_2.png)
 
 
 
