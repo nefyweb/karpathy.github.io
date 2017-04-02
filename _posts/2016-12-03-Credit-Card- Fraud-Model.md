@@ -6,6 +6,9 @@ table{
     border:1px solid #000000;
     overflow-x: auto;
     overflow: scroll;
+    overflow:auto;
+    width:100%;
+    position:relative;
 }
 
 th{
@@ -56,7 +59,8 @@ df.head()
 
 
 
-<div>
+<div id="table-wrapper">
+  <div id="table-scroll">
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -267,6 +271,7 @@ df.head()
     </tr>
   </tbody>
 </table>
+  </div>
 </div>
 
 
