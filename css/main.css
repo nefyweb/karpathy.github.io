@@ -279,6 +279,7 @@ a:visited { color: #205caa; }
 /* Syntax highlighting styles */
 /* ----------------------------------------------------------*/
 
+.highlighter-rouge, .highlighter-rouge code, .highlighter-rouge pre  { background: #29281e; }
 .highlight  { background: #d5dbe0; }
 .highlight .c { color: #999988; font-style: italic } /* Comment */
 .highlight .err { color: #a61717; background-color: #e3d2d2 } /* Error */
