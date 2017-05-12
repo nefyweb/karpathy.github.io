@@ -12,7 +12,15 @@ permalink: /about/
 - Machine Learning Models
     - Natural Language Processing
       - [Textual Stock Prediction](http://nefy.org/nefyweb.github.io/2017/01/06/Textual-Stock-Prediction-Model/)
-    - Deep Learning
+    - Computer Vision
+      - [Deap Leaf Operational Model](http://nefy.org/nefyweb.github.io/2017/04/02/Deep-Leafs-Operational-Classification-Model/)
+    - Classification Models
+      - [Customer Value Model](http://nefy.org/nefyweb.github.io/2016/12/05/Red-Hat-Customer-Value-Model/)
+      - [Insurance Model](http://nefy.org/nefyweb.github.io/2017/03/03/Insurance-Model/)
+    - Regression Model
+      - [Financial Prediction Model](http://nefy.org/nefyweb.github.io/2017/02/25/Financial-Prediction-Model/)
+    - Anomaly Detection
+      - [Credit Card Fraud Model](http://nefy.org/nefyweb.github.io/2016/12/03/Credit-Card-Fraud-Model/)
 - Computational Mathematics
     - Parallalization of Business Decision Making using derivatives.
 - Business and Finance Data
